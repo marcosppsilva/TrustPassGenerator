@@ -7,19 +7,20 @@ import { Listar } from './pages/Listar';
 let index = true;
 
 function App() {
-  
-  if (index === true){
-  return (
-    
-    <div className="App">
-      <Header />
-      <Gerar />
-      <Footer />
-    </div>
-  );} else {
+
+  if (index === true) {
+    return (
+
+      <div className="App">
+        <Header />
+        <Gerar />
+        <Footer />
+      </div>
+    );
+  } else {
 
     return (
-    
+
       <div className="App">
         <Header />
         <Listar />

@@ -1,6 +1,6 @@
 import '../App.css';
 
-export function Header(){
+export function Header() {
     return (
         <header className="headerPass">
             <nav>

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 export function Listar() {
     const [senhas, setSenhas] = useState([]);
-    
+
     return (
         <>
             <h1>SENHAS GERADAS</h1>

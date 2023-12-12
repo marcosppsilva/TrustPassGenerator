@@ -108,6 +108,10 @@ button {
   box-shadow: 2px 3px 5px var(--pretopadrao);
 }
 
+button:hover {
+  box-shadow: 2px 3px 5px var(--brancopadrao);
+}
+
 /*Componente Icons*/
 
 .w-6 {
@@ -142,17 +146,6 @@ button {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-/*.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}*/
 
 .App-link {
   color: #61dafb;

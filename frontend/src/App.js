@@ -3,32 +3,23 @@ import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Gerar } from './pages/Gerar';
 import { Listar } from './pages/Listar';
-
-let index = true;
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
 
-  if (index === true) {
-    return (
-
+  return (
+    <BrowserRouter>
       <div className="App">
         <Header />
-        <Gerar />
+        <Routes>
+          <Route path='/' element={<Gerar />} />
+          <Route path='/pass-list' element={<Listar />} />
+        </Routes>
         <Footer />
       </div>
-    );
-  } else {
+    </BrowserRouter>
+  );
 
-    return (
-
-      <div className="App">
-        <Header />
-        <Listar />
-        <Footer />
-      </div>
-    );
-
-  }
 }
 
 export default App;

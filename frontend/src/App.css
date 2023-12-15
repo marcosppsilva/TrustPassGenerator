@@ -15,24 +15,9 @@
 }
 
 /*Componente cabeçalho*/
-.footerPass {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 150px;
-  padding: 3px;
-  background-color: var(--corbotaoetexto);
-  color: var(--brancopadrao);
-}
-
-/*Componente Rodapé*/
 .headerPass {
   height: 80px;
   padding: 3px;
-}
-
-nav {
-  width: 100%;
 }
 
 .listlinks {
@@ -49,8 +34,38 @@ li {
   width: 50%;
   font-family: var(--font-titulos);
   font-size: 2.5em;
-  color: var(--corbotaoetexto);
   text-shadow: 0px 2px 2px var(--pretopadrao);
+}
+
+.linkRouter {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.linkBack {
+  box-shadow: 0 -2px 5px var(--pretopadrao);
+  box-shadow: 2px 0 5px var(--pretopadrao);
+}
+
+li:hover {
+  transition: transform 0.5s ease;
+  transform: scale(1.03);
+}
+
+.linkRouter:visited {
+  color: var(--corbotaoetexto);
+}
+
+/*Componente Rodapé*/
+
+.footerPass {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 150px;
+  padding: 3px;
+  background-color: var(--corbotaoetexto);
+  color: var(--brancopadrao);
 }
 
 /*Componente DescriptionPass*/
@@ -87,7 +102,8 @@ input {
   text-shadow: 0px 0.5px 0.5px var(--pretopadrao);
 }
 
-.page1 {
+.page1,
+.page2 {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -118,19 +134,61 @@ button:hover {
   height: 75px;
 }
 
-.w-6:hover {
-  transition: transform 0.5s ease;
-  transform: scale(1.1);
+.w-1 {
+  height: 20px;
 }
 
+.w-6:hover,
+.w-1:hover {
+  transition: transform 0.5s ease;
+  transform: scale(1.2);
+  color: var(--corbotaoetexto);
+}
+
+/*Pagina 2*/
+table {
+  padding: 3px;
+}
+
+.trBack {
+  background-color: var(--brancopadrao);
+}
+
+th {
+  font-family: var(--font-subtitulos);
+  color: var(--corbotaoetexto);
+  text-shadow: 0px 0.5px 0.5px var(--pretopadrao);
+}
+
+td {
+  padding: 3px;
+  font-family: var(--font-textos);
+  color: var(--corbotaoetexto);
+  font-size: 0.9em;
+  text-align: left;
+  width: fit-content;
+  background-color: transparent;
+  box-shadow: inset 0 -2px 3px var(--pretopadrao);
+  box-shadow: inset 2px 0 3px var(--pretopadrao);
+}
+
+.opIcon {
+  width: fit-content;
+  background-color: transparent;
+}
+
+/*Não deixa quebra de linha*/
+.tdnowrap {
+  white-space: nowrap;
+}
 
 .App {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: auto;
-  width: 430px;
-  height: 98vh;
+  width: 480px;
+  height: 100vh;
   text-align: center;
   background-color: var(--backgroundpadrao);
   box-shadow: 0 -5px 8px var(--pretopadrao);

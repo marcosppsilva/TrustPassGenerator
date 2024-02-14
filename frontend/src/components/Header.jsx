@@ -21,8 +21,8 @@ export function Header() {
         <header className="headerPass">
             <nav>
                 <ul className='listlinks'>
-                    <li className={optionPage2 === true ? 'linkBack' : ''} onClick={() => handleOptionSelectedChange("page1")}><Link to="/" className='linkRouter'>GERAR</Link></li>
-                    <li li className={optionPage1 === true ? 'linkBack' : ''} onClick={() => handleOptionSelectedChange("page2")}><Link to="/pass-list" className='linkRouter'>VER</Link></li>
+                    <li className={optionPage2 === true ? 'linkBack' : 'linkh'} onClick={() => handleOptionSelectedChange("page1")}><Link to="/" className='linkRouter'>GERAR</Link></li>
+                    <li li className={optionPage1 === true ? 'linkBack' : 'linkh'} onClick={() => handleOptionSelectedChange("page2")}><Link to="/pass-list" className='linkRouter'>VER</Link></li>
                 </ul>
             </nav>
         </header>

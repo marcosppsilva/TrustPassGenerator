@@ -1,14 +1,18 @@
 import '../../src/App.css';
 import { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import { EditIcon, TrashIcon } from '../components/Icons';
+import { DeleteConfirm } from '../components/DeleteConfirm';
 
 export function Listar() {
     const [senhas, setSenhas] = useState([]);
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(undefined);
 
     function dateFormat(received) {
         const noFormat = new Date(received);
         const day = noFormat.getDate().toString();
-        const month = noFormat.getMonth() + 1;
+        const month = Number(noFormat.getMonth() + 1).toString();
         const year = noFormat.getFullYear().toString();
 
         return `${day}/${month}/${year}`;
@@ -44,7 +48,6 @@ export function Listar() {
 
                 if (response.status === 200) {
                     setSenhas(passList);
-                    console.log(passList);
                 } else {
                     console.log("Erro durante o processo !")
                 }
@@ -54,36 +57,61 @@ export function Listar() {
 
         }
         fetchData();
-    }, []);
+    }, [showDeleteConfirm]);
+
+    const handleDeleteClick = (id) => {
+        setShowDeleteConfirm(id);
+    }
+
+    async function handleConfirmDelete(isVisible) {
+
+        try {
+            const options = { method: 'DELETE', headers: { 'User-Agent': 'insomnia/8.3.0' } };
+
+            const response = await fetch(`/delete-pass/${showDeleteConfirm}`, options);
+
+            toast.success("Senha Apagada com sucesso !", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                theme: "dark"
+            });
+
+        } catch (error) {
+            console.log(error)
+
+        }
+        setShowDeleteConfirm(isVisible);
+    }
 
     return (
         <>
             <div className='page2'>
                 <h1 className='generated'>SENHAS GERADAS</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Descrição</th>
-                            <th>Senha</th>
-                            <th>Criação</th>
-                            <th>Criado</th>
-                            <th>Opções</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {senhas && senhas.map((senha, index) => (
-                            <tr key={senha._id} className={index % 2 === 0 ? 'trBack' : ''}>
-                                <td className='tdnowrap'>{senha.descricao}</td>
-                                <td>{senha.senha}</td>
-                                <td>{dateFormat(senha.criacao)}</td>
-                                <td className='tdnowrap'>{daysPassed(senha.criacao)}</td>
-                                <EditIcon className='opIcon' />
-                                <TrashIcon />
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <ul>
+                    <li className='descri'>Descrição:</li>
+                    <li className='descri'>Senha:</li>
+                    <li className='descri'>Criação:</li>
+                    <li className='descri'>Criado:</li>
+                    <li className='descri'>Opções</li>
+                </ul>
+                <div className='table-container'>
+                    <table>
+                        <tbody>
+                            {senhas && senhas.map((senha, index) => (
+                                <tr key={senha._id} className={index % 2 === 0 ? 'trBack' : ''}>
+                                    <td className='tdnowrap'>{senha.descricao}</td>
+                                    <td>{senha.senha}</td>
+                                    <td>{dateFormat(senha.criacao)}</td>
+                                    <td className='tdnowrap'>{daysPassed(senha.criacao)}</td>
+                                    <EditIcon />
+                                    <TrashIcon onclick={() => { handleDeleteClick(senha._id) }} />
+                                </tr>
+                            )).reverse()}
+                        </tbody>
+                    </table>
+                </div>
+                {showDeleteConfirm && <DeleteConfirm className='boxDelete' onConfirmDelete={() => handleConfirmDelete(undefined)} />}
             </div>
+            <ToastContainer />
         </>
     );
 }

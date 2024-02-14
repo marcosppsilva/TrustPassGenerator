@@ -11,7 +11,6 @@ export function Gerar() {
     const [description, setDescription] = useState('');
     const [showCreated, setShowCreated] = useState('');
     const [namePass, setNamePass] = useState();
-    const notify = () => { };
 
     const handleDescriptionChange = (e) => {
         setDescription(e.target.value);
@@ -43,13 +42,11 @@ export function Gerar() {
                         position: toast.POSITION.BOTTOM_RIGHT,
                         theme: "dark"
                     });
-                    notify();
                 } else {
                     toast.error("Erro durante o processo !", {
                         position: toast.POSITION.BOTTOM_RIGHT,
                         theme: "dark"
                     });
-                    notify();
                 }
             }
             else {
@@ -57,7 +54,6 @@ export function Gerar() {
                     position: toast.POSITION.BOTTOM_RIGHT,
                     theme: "dark"
                 });
-                notify();
             }
         } catch (err) {
             console.log(err);
@@ -79,7 +75,6 @@ export function Gerar() {
                         position: toast.POSITION.BOTTOM_RIGHT,
                         theme: "dark"
                     });
-                    notify();
                 }} />
                 <ToastContainer />
             </div>
